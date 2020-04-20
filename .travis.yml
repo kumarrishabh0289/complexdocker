@@ -20,3 +20,15 @@ after_success:
   - docker push rishu53/multi-nginx
   - docker push rishu53/multi-worker 
   - docker push rishu53/multi-server 
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-test"
+  env: "DockerTest-env"
+  bucket_name: "elasticbeanstalk-us-east-2-823931889189"
+  bucket_path: "DockerTest"
+  on:
+    branch: master
+  access_key_id: $KEY
+  secret_access_key: $PASSWORD
